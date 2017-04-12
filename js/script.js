@@ -87,7 +87,6 @@
         //todo 获得章节信息之后的回调
         Chapter_id = Util.StorageGetter('chapter_id') ? parseInt(Util.StorageGetter('chapter_id')) : data.chapters[1].chapter_id;
         ChapterTotal = data.chapters.length;
-        console.log(ChapterTotal);
         callback && callback(data);
       }, 'json');
     };
