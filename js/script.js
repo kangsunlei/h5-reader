@@ -59,6 +59,7 @@
     'background-color': bgcolor,
     'color': fcolor
   });
+  $('.m-button-bar').css('background',bgcolor);
 
   function main() {
     //todo 整个项目的入口函数
@@ -82,10 +83,11 @@
       }
       //todo 实现和阅读器相关的数据交互方法
     var getFictionInfo = function(callback) {
-      $.get('/data/chapter.json', function(data) {
+      $.get('data/chapter.json', function(data) {
         //todo 获得章节信息之后的回调
         Chapter_id = Util.StorageGetter('chapter_id') ? parseInt(Util.StorageGetter('chapter_id')) : data.chapters[1].chapter_id;
         ChapterTotal = data.chapters.length;
+        console.log(ChapterTotal);
         callback && callback(data);
       }, 'json');
     };
@@ -102,7 +104,7 @@
     };
     var prevChapter = function(UIcallback) {
       Chapter_id = parseInt(Chapter_id, 10);
-      if (Chapter_id === 0) {
+      if (Chapter_id === 1) {
         return;
       }
       Chapter_id -= 1;
@@ -213,6 +215,7 @@
         backgroundColor: bgcolor,
         color: fcolor
       });
+      $('.m-button-bar').css('background',bgcolor);
       changeTheme(isNight);
     });
 
@@ -226,7 +229,7 @@
     });
 
     $('#prev-button').click(function() {
-      readerModel.nextChapter(function(data) {
+      readerModel.prevChapter(function(data) {
         readerUI(data);
       })
     });

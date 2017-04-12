@@ -33,9 +33,8 @@ body {
 }
 
 .m-button-bar {
-  width: 70%;
   max-width: 800px;
-  padding: 5px;
+  padding: 5px 15%;
   margin: 0 auto;
 }
 
